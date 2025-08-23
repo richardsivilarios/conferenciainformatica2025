@@ -112,3 +112,10 @@ INSERT INTO Products (productid, productname, supplierid, categoryid, unit, pric
 INSERT INTO Products (productid, productname, supplierid, categoryid, unit, price) VALUES(75,'Rhönbräu Klosterbier',12,1,'24 - 0.5 l bottles',7.75);
 INSERT INTO Products (productid, productname, supplierid, categoryid, unit, price) VALUES(76,'Lakkalikööri',23,1,'500 ml',18);
 INSERT INTO Products (productid, productname, supplierid, categoryid, unit, price) VALUES(77,'Original Frankfurter grüne Soße',12,2,'12 boxes',13);
+
+
+create view vcategoriaproducto as 
+select row_number () OVER () AS llaveprimaria, categoryname, productname,price 
+from 
+categories c, products p 
+where c.categoryid = p.categoryid;
